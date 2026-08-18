@@ -1,0 +1,50 @@
+name: Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - feature/add-new-rg
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Terraform CI/CD
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_SECRET }}
+      ARM_TENANT_ID: ${{ secrets.SERVICE_PRINCIPAL_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.SERVICE_PRINCIPAL_SUBSCRIPTION_ID }}
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format Check
+        working-directory: ./Enviroments
+        run: terraform fmt 
+
+      - name: Terraform Init
+        working-directory: ./Enviroments
+        run: terraform init
+
+      - name: Terraform Validate
+        working-directory: ./Enviroments
+        run: terraform validate
+
+      - name: Terraform Plan
+        working-directory: ./Enviroments
+        run: terraform plan
+
+      - name: Terraform Apply
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        working-directory: ./Enviroments
+        run: terraform apply -auto-approve
