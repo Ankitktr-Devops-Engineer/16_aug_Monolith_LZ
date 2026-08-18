@@ -3,9 +3,13 @@ rgs = {
     name     = "india"
     location = "central india"
   }
-  rg2={
-    name="china"
-    location="west us"
+  rg2 = {
+    name     = "china"
+    location = "west us"
+  }
+  rg3 = {
+    name     = "humana"
+    location = "central india"
   }
 }
 vnets = {
@@ -39,16 +43,16 @@ pips = {
 }
 nics-vms = {
   nic1-vm1 = {
-    name_nic                = "nic-first"
+    name_nic            = "nic-first"
     location            = "central india"
     resource_group_name = "india"
-    name_vm                = "public-vm"
+    name_vm             = "public-vm"
     location            = "central india"
     admin_username      = "devops"
     admin_password      = "Qwerty@123"
     size                = "Standard_D4_v5"
     subnet_key          = "snet1"
     pip_key             = "pip"
-    nic_key             ="nic1-vm1"
+    nic_key             = "nic1-vm1"
   }
 }
