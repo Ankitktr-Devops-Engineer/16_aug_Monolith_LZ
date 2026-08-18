@@ -7,10 +7,10 @@ rgs = {
     name     = "china"
     location = "west us"
   }
-  # rg3={
-  #   name="usa"
-  #   location="west us"
-  # }
+  rg3={
+    name="usa"
+    location="west us"
+  }
 }
 vnets = {
   vnet1 = {
