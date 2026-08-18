@@ -14,6 +14,12 @@ jobs:
     name: Terraform Validation
     runs-on: ubuntu-latest
 
+    env:
+      ARM_CLIENT_ID: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_SECRET }}
+      ARM_TENANT_ID: ${{ secrets.SERVICE_PRINCIPAL_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.SERVICE_PRINCIPAL_SUBSCRIPTION_ID }}
+
     steps:
 
       - name: Checkout Code
