@@ -3,10 +3,7 @@ rgs = {
     name     = "india"
     location = "central india"
   }
-  rg2 = {
-    name     = "china"
-    location = "west us"
-  }
+
 }
 vnets = {
   vnet1 = {
@@ -43,7 +40,6 @@ nics-vms = {
     location            = "central india"
     resource_group_name = "india"
     name_vm             = "public-vm"
-    location            = "central india"
     admin_username      = "devops"
     admin_password      = "Qwerty@123"
     size                = "Standard_D4_v5"
